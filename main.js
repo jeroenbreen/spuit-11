@@ -60,9 +60,32 @@ function getPreventedCasesForRange(start, end, shot) {
     let total, effectivity;
     total = 0;
     effectivity = vaccine.shots[shot].effectivity;
+    console.log('Prevented cases, assuming effectivity=' + effectivity
+		+ ', shot number: ' + shot
+		+ ', R=' + currentSituation.r
+		+ ', days for effect: ' + vaccine.daysForEffect
+	       )
+    console.log('Day=day of campaign; day_eff=corresponding day the vaccine becomes effective;\n'
+		+ 'n_inf: number of infections on day_eff; p_vac: fraction of vaccinated population;\n'
+		+ 'prev: prevented cases on day_eff; tot_prev: total prevented cases');
+    console.log('Day\tDay_eff\tn_inf\tp_vac\tprev\tTot_prev\n')
     for (let i = start; i < end; i++) {
         let dayOfEffect = i + vaccine.daysForEffect + vaccine.shots[shot].wait;
-        total += getInfectedOnDay(dayOfEffect) * getChanceToBeVaccinated(i) * effectivity;
+	n_inf = getInfectedOnDay(dayOfEffect)
+	p_vac = getChanceToBeVaccinated(i)
+	delta = n_inf * p_vac * effectivity;
+        total += delta;
+	if (i < 5 || i >= end-5)
+	    console.log(i
+			+ '\t' + dayOfEffect
+			+ '\t' + n_inf.toPrecision(3)
+			+ '\t' + p_vac.toPrecision(3)
+			+ '\t' + delta.toPrecision(3)
+			+ '\t' + total.toPrecision(3)
+		       );
+	else if (i == 5)
+	    console.log('...\n');
+
     }
     return total;
 }
@@ -75,4 +98,8 @@ function getPreventedDeceasedForRange(start, end, shot) {
 // console.log(getPreventedCasesForRange(0, daysBehind, 0));
 // console.log(getPreventedDeceasedForRange(0, daysBehind, 0));
 // console.log(getPreventedDeceasedForRange(0, daysBehind, 1));
-console.log(getPreventedDeceasedForRange(0, daysBehind, 0) + getPreventedDeceasedForRange(0, daysBehind, 1));
+
+np0 = getPreventedDeceasedForRange(0, daysBehind, 0);
+np1 = getPreventedDeceasedForRange(0, daysBehind, 1);
+console.log('Prevented deceased total:' + (np0 + np1));
+console.log('Assuming mortality: ' + (mortality80plus*100) + '%');
