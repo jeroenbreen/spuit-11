@@ -1,0 +1,28 @@
+* {
+    box-sizing: border-box;
+}
+
+
+
+$serif: 'Merriweather', serif;
+
+@import "colors";
+$monospace: 'Inconsolata', courier, monospace;
+
+
+input {
+    border: transparent;
+    background: #ddd;
+    padding: 2px;
+    font-family: inherit;
+    font-size: inherit;
+    outline: none;
+}
+
+@mixin mobile {
+    @media only screen
+    and (max-width: 767px) {
+        @content;
+    }
+}
+
