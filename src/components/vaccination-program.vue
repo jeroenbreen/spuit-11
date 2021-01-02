@@ -18,9 +18,9 @@
 <template>
     <div class="vaccination-program">
         <vaccine-day
-                v-for="day in country.vaccinationProgram"
-                :country="country"
-                :day="day"/>
+            v-for="day in country.vaccinationProgram"
+            :country="country"
+            :day="day"/>
     </div>
 </template>
 

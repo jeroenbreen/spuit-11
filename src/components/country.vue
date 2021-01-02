@@ -20,7 +20,7 @@
 <template>
     <div class="country">
         <div class="country__name">
-            {{country.name}}
+            {{country.name}} <span v-if="country.situation">¹</span>
         </div>
         <vaccination-program
             :country="country"/>

@@ -3,10 +3,12 @@
     import vaccin from '@/data/vaccin';
     import situation from '@/data/situation';
     import country from "./components/country";
+    import Notes from "./components/notes";
 
     export default {
         name: 'app',
         components: {
+            Notes,
             country
         },
         data() {
@@ -61,6 +63,7 @@
         <country
             v-for="country in allCountries"
             :country="country"/>
+        <notes/>
     </div>
 </template>
 

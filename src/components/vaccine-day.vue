@@ -34,7 +34,7 @@
     <div class="vaccine-day">
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Vaccins
+                Vaccins ²
             </div>
             <div class="vaccine-day__value">
                 <input
@@ -47,7 +47,7 @@
             v-if="country.population80plus"
             class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Pct 80+
+                Pct 80+ ³
             </div>
             <div class="vaccine-day__value">
                 {{percentageFormatted}}
@@ -57,12 +57,12 @@
             v-if="country.vaccin"
             class="vaccine-day__shots">
             <vaccine-day-shot
-                    v-for="shot in shots"
-                    :vaccin="country.vaccin"
-                    :shot="shot"
-                    :country="country"
-                    :day="day"
-                    :percentage="percentage"/>
+                v-for="shot in shots"
+                :vaccin="country.vaccin"
+                :shot="shot"
+                :country="country"
+                :day="day"
+                :percentage="percentage"/>
         </div>
     </div>
 </template>

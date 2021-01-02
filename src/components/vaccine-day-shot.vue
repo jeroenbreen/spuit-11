@@ -62,15 +62,7 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Effectiviteit
-            </div>
-            <div class="vaccine-day__value">
-                {{shot.effectivity}}
-            </div>
-        </div>
-        <div class="vaccine-day__cell">
-            <div class="vaccine-day__label">
-                Datum effectief
+                Datum effectief ⁴
             </div>
             <div class="vaccine-day__value">
                 {{relatedDateFormatted}} ({{relatedDateIndex}})
@@ -78,7 +70,15 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Infecties
+                Effectiviteit ⁵
+            </div>
+            <div class="vaccine-day__value">
+                {{shot.effectivity}}
+            </div>
+        </div>
+        <div class="vaccine-day__cell">
+            <div class="vaccine-day__label">
+                Infecties ⁶
             </div>
             <div class="vaccine-day__value">
                 {{Math.round(infections)}}
@@ -86,7 +86,7 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Infecties voorkomen
+                Infecties voorkomen ⁶ ⁷
             </div>
             <div class="vaccine-day__value">
                 {{Math.round(prevented)}}
