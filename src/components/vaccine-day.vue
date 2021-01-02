@@ -32,14 +32,11 @@
 
 <template>
     <div class="vaccine-day">
-        <div class="vaccine-day__cell vaccine-day__date">
-            {{day.date}} ({{dayIndex}})
-        </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Vaccines
+                Vaccins
             </div>
-            <div class="vaccine-day__date">
+            <div class="vaccine-day__value">
                 <input
                     v-if="!day.locked"
                     v-model="day.n"/>
@@ -50,7 +47,7 @@
             v-if="country.population80plus"
             class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Percentage 80+
+                Pct 80+
             </div>
             <div class="vaccine-day__value">
                 {{percentageFormatted}}
@@ -75,41 +72,37 @@
     @import '@/styles/variables.scss';
 
     .vaccine-day {
-        border: 1px solid #ddd;
-        width: 300px;
-        height: 400px;
-        margin-bottom: 24px;
+        width: 200px;
+        background: #fff;
+        margin-right: 4px;
 
         .vaccine-day__cell {
-            border-bottom: 1px solid #ddd;
-            padding: 8px;
+            border-bottom: 1px solid $bg;
             display: flex;
 
             .vaccine-day__label {
                 width: 50%;
+                border-right: 1px solid $bg;
+                padding: 4px 8px;
             }
 
             .vaccine-day__value {
                 width: 50%;
+                padding: 4px 8px;
+
+                input {
+                    width: 100%;
+                }
             }
 
-            input {
-                width: 100%;
-            }
-
-            &.vaccine-day__date {
-                background: #555;
-                color: #fff;
-            }
-
-            &.vaccine-day__date-related {
-                background: #aaa;
-                color: #fff;
-            }
 
             &:last-child {
                 border-bottom: 0;
             }
+        }
+
+        .vaccine-day__shots {
+            border-top: 1px solid #555;
         }
     }
 </style>

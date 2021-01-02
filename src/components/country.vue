@@ -32,13 +32,14 @@
     @import '@/styles/variables.scss';
 
     .country {
-        margin-right: 24px;
-        background: #fff;
-        padding: 8px;
+        display: flex;
+        margin-bottom: 20px;
 
         .country__name {
             font-weight: 700;
             margin-bottom: 12px;
+            width: 100px;
+            flex-shrink: 0;
         }
     }
 </style>

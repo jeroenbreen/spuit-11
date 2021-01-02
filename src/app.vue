@@ -36,6 +36,9 @@
             },
             allCountries() {
                 return [...this.countries, this.germanEquivalent];
+            },
+            dates() {
+                return this.countries[0].vaccinationProgram.map(d => d.date);
             }
         },
         methods: {}
@@ -45,6 +48,16 @@
 
 <template>
     <div class="app">
+        <div class="header">
+            <div class="header__country"></div>
+            <div class="header__dates">
+                <div
+                    v-for="(date, index) in dates"
+                    class="header__date">
+                    {{date}} ({{index}})
+                </div>
+            </div>
+        </div>
         <country
             v-for="country in allCountries"
             :country="country"/>
@@ -57,10 +70,29 @@
     @import '@/styles/variables.scss';
 
     .app {
-        background: #f5eedc;
+        background: $bg;
         padding: 20px;
         overflow: auto;
         height: 100%;
-        display: flex;
+
+        .header {
+            display: flex;
+            margin-bottom: 8px;
+
+            .header__country {
+                width: 100px;
+                flex-shrink: 0;
+            }
+
+            .header__dates {
+                display: flex;
+
+                .header__date {
+                    width: 200px;
+                    padding: 8px;
+                    font-weight: 800;
+                }
+            }
+        }
     }
 </style>

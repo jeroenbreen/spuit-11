@@ -41,7 +41,7 @@
                 } else {
                     lastSituation = this.country.situation[this.country.situation.length - 1];
                     daysApart = differenceInDays(this.relatedDate, new Date(lastSituation.date));
-                    growthPerDay = Math.pow(lastSituation.r, (1/4));
+                    growthPerDay = Math.pow(lastSituation.Rt, (1/4));
                     return lastSituation.infections * Math.pow(growthPerDay, daysApart);
 
                 }
@@ -58,11 +58,11 @@
 <template>
     <div class="vaccine-day-shot">
         <div class="vaccine-day-shot__title">
-            Shot {{shot.title}}
+            Prik {{shot.title}}
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Effectivity
+                Effectiviteit
             </div>
             <div class="vaccine-day__value">
                 {{shot.effectivity}}
@@ -70,7 +70,7 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Related date
+                Datum effectief
             </div>
             <div class="vaccine-day__value">
                 {{relatedDateFormatted}} ({{relatedDateIndex}})
@@ -78,7 +78,7 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Infections
+                Infecties
             </div>
             <div class="vaccine-day__value">
                 {{Math.round(infections)}}
@@ -86,7 +86,7 @@
         </div>
         <div class="vaccine-day__cell">
             <div class="vaccine-day__label">
-                Infections prevented
+                Infecties voorkomen
             </div>
             <div class="vaccine-day__value">
                 {{Math.round(prevented)}}

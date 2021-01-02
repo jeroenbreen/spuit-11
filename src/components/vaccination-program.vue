@@ -17,12 +17,10 @@
 
 <template>
     <div class="vaccination-program">
-        <div class="vaccination-program__days">
-            <vaccine-day
+        <vaccine-day
                 v-for="day in country.vaccinationProgram"
                 :country="country"
                 :day="day"/>
-        </div>
     </div>
 </template>
 
@@ -31,10 +29,6 @@
     @import '@/styles/variables.scss';
 
     .vaccination-program {
-
-        .vaccination-program__days {
-            //display: flex;
-            //flex-wrap: wrap;
-        }
+        display: flex;
     }
 </style>
