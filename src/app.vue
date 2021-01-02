@@ -1,5 +1,7 @@
 <script>
     import countries from '@/data/countries';
+    import vaccin from '@/data/vaccin';
+    import situation from '@/data/situation';
     import country from "./components/country";
 
     export default {
@@ -21,12 +23,15 @@
                 populationRatio = netherlands.population / germany.population;
                 equivalent = {...netherlands};
                 equivalent.name = 'Nederland achterstand';
-                equivalent.vaccineProgram = germany.vaccineProgram.map((day, index) => {
+                equivalent.vaccinationProgram = germany.vaccinationProgram.map((day, index) => {
                     return {
                         date: day.date,
-                        n: Math.round(day.n * populationRatio) - netherlands.vaccineProgram[index].n
+                        n: Math.round(day.n * populationRatio) - netherlands.vaccinationProgram[index].n,
+                        locked: true
                     }
                 });
+                equivalent.vaccin = vaccin;
+                equivalent.situation = situation;
                 return equivalent;
             },
             allCountries() {
@@ -56,5 +61,6 @@
         padding: 20px;
         overflow: auto;
         height: 100%;
+        display: flex;
     }
 </style>

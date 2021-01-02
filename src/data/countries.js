@@ -2,7 +2,7 @@ const countries = [
     {
         name: 'Duitsland',
         population: 80219999,
-        vaccineProgram: [
+        vaccinationProgram: [
             {
                 date: '2020-12-26',
                 n: 27500
@@ -81,7 +81,7 @@ const countries = [
         name: 'Nederland',
         population: 17440000,
         population80plus: 822088,
-        vaccineProgram: [
+        vaccinationProgram: [
             {
                 date: '2020-12-26',
                 n: 0

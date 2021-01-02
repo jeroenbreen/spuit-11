@@ -1,10 +1,10 @@
 <script>
-    import vaccineProgram from "./vaccine-program";
+    import vaccinationProgram from "./vaccination-program";
 
     export default {
         name: 'country',
         components: {
-            vaccineProgram
+            vaccinationProgram
         },
         props: {
             country: Object
@@ -22,7 +22,7 @@
         <div class="country__name">
             {{country.name}}
         </div>
-        <vaccine-program
+        <vaccination-program
             :country="country"/>
     </div>
 </template>
@@ -32,13 +32,13 @@
     @import '@/styles/variables.scss';
 
     .country {
-        margin-bottom: 4px;
+        margin-right: 24px;
         background: #fff;
         padding: 8px;
 
         .country__name {
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 12px;
         }
     }
 </style>
