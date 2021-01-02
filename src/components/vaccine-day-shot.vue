@@ -37,7 +37,7 @@
             infections() {
                 let lastSituation, daysApart, growthPerDay;
                 if (this.situationIsKnown) {
-                    return this.situationIsKnown;
+                    return this.situationIsKnown.infections;
                 } else {
                     lastSituation = this.country.situation[this.country.situation.length - 1];
                     daysApart = differenceInDays(this.relatedDate, new Date(lastSituation.date));
