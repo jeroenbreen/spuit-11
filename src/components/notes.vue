@@ -18,7 +18,7 @@
 
 <template>
     <div class="notes">
-        ¹ Voor 'Nederland achterstand' geldt: aantal vaccinaties Duitsland * (inwoners Nederland / inwoners Duitsland) - aantal vaccinaties Nederland
+        ¹ Voor 'Nederland achterstand' geldt: aantal vaccinaties Duitsland * (inwoners Nederland / inwoners Duitsland) - aantal vaccinaties Nederland<br>
         ² Vaccinaties op die dag uitgevoerd.<br>
         ³ De vaccinatiegraad in de leeftijdsgroep 80+ die op die dag bereikt is.<br>
         ⁴ Het duurt {{vaccin.shots[0].daysForEffect}} dagen voordat de vaccinatie effectief is.<br>
