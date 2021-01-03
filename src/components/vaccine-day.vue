@@ -1,5 +1,7 @@
 <script>
     import VaccineDayShot from "./vaccine-day-shot";
+    import main from '@/tools/main';
+
     export default {
         name: 'vaccine-day',
         components: {VaccineDayShot},
@@ -11,18 +13,20 @@
             shots() {
                 return this.country.vaccin.shots;
             },
-            dayIndex() {
+            vaccinationDayIndex() {
                 return this.country.vaccinationProgram.indexOf(this.day);
             },
             percentage() {
-                let total = 0;
-                for (let i = 0; i < this.dayIndex + 1; i++) {
-                    total += Number(this.country.vaccinationProgram[i].n);
-                }
-                return total / this.country.population80plus;
+                return main.getPercentageVaccinated(this.country, this.vaccinationDayIndex);
             },
             percentageFormatted() {
                 return Math.round(1000 * this.percentage) / 10 + '%';
+            },
+            preventedDeceasedTotal() {
+                let shot1, shot2;
+                shot1 = main.getPreventedDeceasedForRange(this.country, [0, this.vaccinationDayIndex], this.shots[0]);
+                shot2 = main.getPreventedDeceasedForRange(this.country, [0, this.vaccinationDayIndex], this.shots[1]);
+                return shot1 + shot2;
             }
         },
         methods: {}
@@ -58,11 +62,24 @@
             class="vaccine-day__shots">
             <vaccine-day-shot
                 v-for="shot in shots"
-                :vaccin="country.vaccin"
                 :shot="shot"
                 :country="country"
-                :day="day"
-                :percentage="percentage"/>
+                :vaccination-day-index="vaccinationDayIndex"/>
+        </div>
+        <div
+            v-if="country.vaccin"
+            class="vaccine-day-shot">
+            <div class="vaccine-day-shot__title">
+                Totaal van de 2 shots
+            </div>
+            <div class="vaccine-day__cell">
+                <div class="vaccine-day__label">
+                    Overlijdens voorkomen totaal
+                </div>
+                <div class="vaccine-day__value">
+                    {{Math.round(preventedDeceasedTotal)}}
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -72,7 +89,7 @@
     @import '@/styles/variables.scss';
 
     .vaccine-day {
-        width: 200px;
+        width: 230px;
         background: #fff;
         margin-right: 4px;
 

@@ -50,19 +50,23 @@
 
 <template>
     <div class="app">
-        <div class="header">
-            <div class="header__country"></div>
-            <div class="header__dates">
-                <div
-                    v-for="(date, index) in dates"
-                    class="header__date">
-                    {{date}} ({{index}})
+        <div class="content">
+            <div class="header">
+                <div class="header__country"></div>
+                <div class="header__dates">
+                    <div
+                            v-for="(date, index) in dates"
+                            class="header__date">
+                        {{date}} ({{index}})
+                    </div>
                 </div>
             </div>
+            <div class="countries">
+                <country
+                        v-for="country in allCountries"
+                        :country="country"/>
+            </div>
         </div>
-        <country
-            v-for="country in allCountries"
-            :country="country"/>
         <notes/>
     </div>
 </template>
@@ -74,28 +78,43 @@
 
     .app {
         background: $bg;
-        padding: 20px;
-        overflow: auto;
         height: 100%;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
 
-        .header {
-            display: flex;
-            margin-bottom: 8px;
+        .content {
+            height: calc(100% - 170px);
+            overflow: auto;
+            border-bottom: 1px solid rgba(0,0,0,0.2);
+            padding: 20px;
 
-            .header__country {
-                width: 100px;
-                flex-shrink: 0;
-            }
-
-            .header__dates {
+            .header {
                 display: flex;
+                margin-bottom: 8px;
 
-                .header__date {
-                    width: 200px;
-                    padding: 8px;
-                    font-weight: 800;
+                .header__country {
+                    width: 100px;
+                    flex-shrink: 0;
+                }
+
+                .header__dates {
+                    display: flex;
+
+                    .header__date {
+                        width: 230px;
+                        padding: 8px;
+                        font-weight: 800;
+                        margin-right: 4px;
+                    }
                 }
             }
+        }
+
+        .notes {
+            height: 170px;
+            padding: 10px 20px;
         }
     }
 </style>

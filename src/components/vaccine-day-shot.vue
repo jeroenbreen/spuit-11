@@ -1,53 +1,37 @@
 <script>
     import { differenceInDays, format, addDays } from 'date-fns';
 
+    import main from '@/tools/main';
+
     export default {
         name: 'vaccine-day-shot',
         components: {},
         props: {
-            day: Object,
             country: Object,
-            vaccin: Object,
             shot: Object,
-            percentage: Number
+            vaccinationDayIndex: Number
         },
         computed: {
-            daysLater() {
-                let shotIndex, days;
-                shotIndex = this.vaccin.shots.indexOf(this.shot);
-                if (shotIndex === 0) {
-                    return this.vaccin.shots[0].daysForEffect;
-                } else {
-                    return this.vaccin.shots[1].wait + this.vaccin.shots[1].daysForEffect;
-                }
+            infections() {
+                return main.getInfectionsForDay(this.dayIndexOfEffect);
             },
-            relatedDate() {
-                return addDays(new Date(this.day.date), this.daysLater);
+            dayIndexOfEffect() {
+                return main.getDayIndexOfEffect(this.vaccinationDayIndex, this.shot);
             },
-            relatedDateFormatted() {
-                return format(this.relatedDate, 'yyyy-MM-dd');
-            },
-            relatedDateIndex() {
-                let startDate = new Date(this.country.vaccinationProgram[0].date);
-                return differenceInDays(this.relatedDate, startDate)
+            dateOfEffect() {
+                return format(addDays(main.dayZero, this.dayIndexOfEffect), 'dd-MM-yyyy')
             },
             situationIsKnown() {
-                return this.country.situation[this.relatedDateIndex];
+                return main.getSituationForDay(this.dayIndexOfEffect)
             },
-            infections() {
-                let lastSituation, daysApart, growthPerDay;
-                if (this.situationIsKnown) {
-                    return this.situationIsKnown.infections;
-                } else {
-                    lastSituation = this.country.situation[this.country.situation.length - 1];
-                    daysApart = differenceInDays(this.relatedDate, new Date(lastSituation.date));
-                    growthPerDay = Math.pow(lastSituation.Rt, (1/4));
-                    return lastSituation.infections * Math.pow(growthPerDay, daysApart);
-
-                }
+            preventedInfections() {
+                return main.getPreventedInfectionsForDay(this.country, this.vaccinationDayIndex, this.shot)
             },
-            prevented() {
-                return this.infections * this.shot.effectivity * this.percentage;
+            preventedDeceased() {
+                return main.getDeceasedFromInfections(this.preventedInfections);
+            },
+            preventedDeceasedTotal() {
+                return main.getPreventedDeceasedForRange(this.country, [0, this.vaccinationDayIndex], this.shot);
             }
         },
         methods: {}
@@ -65,7 +49,7 @@
                 Datum effectief ⁴
             </div>
             <div class="vaccine-day__value">
-                {{relatedDateFormatted}} ({{relatedDateIndex}})
+                {{dateOfEffect}} ({{dayIndexOfEffect}})
             </div>
         </div>
         <div class="vaccine-day__cell">
@@ -82,6 +66,7 @@
             </div>
             <div class="vaccine-day__value">
                 {{Math.round(infections)}}
+                <span v-if="!situationIsKnown">⁸</span>
             </div>
         </div>
         <div class="vaccine-day__cell">
@@ -89,7 +74,23 @@
                 Infecties voorkomen ⁶ ⁷
             </div>
             <div class="vaccine-day__value">
-                {{Math.round(prevented)}}
+                {{Math.round(preventedInfections)}}
+            </div>
+        </div>
+        <div class="vaccine-day__cell">
+            <div class="vaccine-day__label">
+                Overlijdens voorkomen deze dag ⁹
+            </div>
+            <div class="vaccine-day__value">
+                {{Math.round(preventedDeceased)}}
+            </div>
+        </div>
+        <div class="vaccine-day__cell">
+            <div class="vaccine-day__label">
+                Overlijdens voorkomen totaal vanaf dag 0
+            </div>
+            <div class="vaccine-day__value">
+                {{Math.round(preventedDeceasedTotal)}}
             </div>
         </div>
     </div>
