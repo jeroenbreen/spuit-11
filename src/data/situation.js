@@ -15,6 +15,7 @@ const situation = [
     },{
         date: '2020-12-29',
         infections: 425,
+        // https://twitter.com/HJWesteneng/status/1344742497348685832/photo/2
         Rt: 1
     }
 ];
