@@ -29,7 +29,7 @@ const getInfectionsForDay = function(day) {
 
 const getPreventedDeceasedForRange = function(country, range, shot) {
     let totalInfections = 0;
-    for (let i = range[0]; i < range[1] + 1; i++) {
+    for (let i = range[0]; i <= range[1]; i++) {
         totalInfections += getPreventedInfectionsForDay(country, i, shot);
     }
     return getDeceasedFromInfections(totalInfections);
@@ -46,7 +46,7 @@ const getPreventedInfectionsForDay = function(country, vaccinationDay, shot) {
 
 const getPercentageVaccinated = function(country, vaccinationDay) {
     let total = 0;
-    for (let i = 0; i < vaccinationDay + 1; i++) {
+    for (let i = 0; i <= vaccinationDay; i++) {
         total += Number(country.vaccinationProgram[i].n);
     }
     return total / country.population80plus;
