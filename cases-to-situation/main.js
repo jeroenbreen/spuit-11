@@ -2,7 +2,12 @@
 const url = 'files/COVID-19_casus_landelijk.json';
 
 // infection is 4 days before a case administration (?)
-const date = '2020-12-26';
+const startDate = '2020-12-26';
+// this should be 18
+const waitForDataToStabilize = 5;
+const msPerDay = 24 * 3600 * 1000;
+
+
 
 
 $.getJSON( url, function( data ) {
@@ -11,9 +16,11 @@ $.getJSON( url, function( data ) {
 });
 
 function getSituation(rows) {
-    let situation, ms;
+    let situation, startDateInMs, endDateInMs;
     situation = [];
-    ms = new Date(date).getTime();
+
+    startDateInMs = new Date(startDate).getTime();
+    endDateInMs = new Date().getTime() - (waitForDataToStabilize * msPerDay);
 
     function getDay(date) {
         let day = {
@@ -30,11 +37,31 @@ function getSituation(rows) {
     }
 
     for (let item of rows) {
-        // todo we should make a correction for DPL (Date of first Positive Labresult) and DON Date of Notification
-        let time, date;
+        let time, date, type, dateCorrection;
         date = item.Date_statistics;
-        time = new Date(date).getTime();
-        if ((item.Agegroup === '80-89' || item.Agegroup === '90+') && time >= ms) {
+        type = item.Date_statistics_type;
+
+        // types
+        // DOO is the correct date for infection
+        // DPL
+        switch (type) {
+            case 'DOO':
+                //  Date of disease onset
+                dateCorrection = 0;
+                break;
+            case 'DPL':
+                // Date of first Positive Labresult
+                dateCorrection = 5;
+                break;
+            case 'DON':
+                // Date of Notification
+                dateCorrection = 6;
+                break;
+        }
+        time = new Date(date).getTime() - (dateCorrection * msPerDay);
+
+
+        if ((item.Agegroup === '80-89' || item.Agegroup === '90+') && time >= startDateInMs && time < endDateInMs) {
             let day = getDay(date);
             day.infections++;
         }
