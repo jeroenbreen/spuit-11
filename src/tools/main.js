@@ -7,6 +7,7 @@ import vaccin from '@/data/vaccin';
 const dayZero = new Date('2020-12-26');
 
 // see data-preparation/cases-to-situation/main.js -> getMortality()
+// measured data from 2020-07-01 to 2021-01-04
 const mortality80plus = 0.10181230836618485;
 
 
