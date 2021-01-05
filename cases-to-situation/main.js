@@ -51,11 +51,11 @@ function getSituation(rows) {
                 break;
             case 'DPL':
                 // Date of first Positive Labresult
-                dateCorrection = 5;
+                dateCorrection = 4;
                 break;
             case 'DON':
                 // Date of Notification
-                dateCorrection = 6;
+                dateCorrection = 5;
                 break;
         }
         time = new Date(date).getTime() - (dateCorrection * msPerDay);
