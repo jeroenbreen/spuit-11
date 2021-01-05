@@ -1,15 +1,14 @@
 import situation from '@/data/situation';
 import vaccin from '@/data/vaccin';
-import main from '@/tools/main';
 
 // concepts
 // 'vaccinationDay' is the number of days since start vaccination program of Germany (2020-12-26), starting with 0
 
-
-// needs more attention
-// week 51 309 fatalities, week 48 1634 cases
-const mortality80plus = 0.19;
 const dayZero = new Date('2020-12-26');
+
+// see data-preparation/cases-to-situation/main.js -> getMortality()
+const mortality80plus = 0.10181230836618485;
+
 
 const getSituationForDay = function(day) {
     return situation[day];
