@@ -16,14 +16,21 @@ const getSituationForDay = function(day) {
 };
 
 const getInfectionsForDay = function(day) {
-    let lastSituation, daysApart, growthPerDay;
+    let lastSituation, daysApart, growthPerDay, cases, start, end, average;
     if (getSituationForDay(day)) {
         return getSituationForDay(day).infections;
     } else {
+        cases = 0;
+        start = situation.length - 1;
+        end = Math.max(0, situation.length - 8);
+        for (let i = start; i > end; i--) {
+            cases += situation[i].infections;
+        }
+        average = cases / (start - end);
         lastSituation = situation[situation.length - 1];
         daysApart = day - situation.length + 1;
         growthPerDay = Math.pow(lastSituation.Rt, (1/4));
-        return lastSituation.infections * Math.pow(growthPerDay, daysApart);
+        return average * Math.pow(growthPerDay, daysApart);
     }
 };
 
