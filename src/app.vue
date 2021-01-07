@@ -28,8 +28,15 @@
                 equivalent.vaccinationProgram = germany.vaccinationProgram.map((day, index) => {
                     return {
                         date: day.date,
-                        n: Math.round(day.n * populationRatio) - netherlands.vaccinationProgram[index].n,
-                        locked: true
+                        targets: day.targets.map(target => {
+                            let vaccinations, OtherTarget;
+                            OtherTarget = netherlands.vaccinationProgram[index].targets.find(t => t.title === target.title);
+                            vaccinations = Math.round(target.vaccinations * populationRatio) - OtherTarget.vaccinations;
+                            return {
+                                title: target.title,
+                                vaccinations: vaccinations
+                            }
+                        })
                     }
                 });
                 equivalent.vaccin = vaccin;
@@ -55,8 +62,8 @@
                 <div class="header__country"></div>
                 <div class="header__dates">
                     <div
-                            v-for="(date, index) in dates"
-                            class="header__date">
+                        v-for="(date, index) in dates"
+                        class="header__date">
                         {{date}} ({{index}})
                     </div>
                 </div>

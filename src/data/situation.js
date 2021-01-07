@@ -25,7 +25,8 @@ const situation = [{
     "infections": 171
 }, {
     "date": "2021-01-03",
-    "infections": 19
+    "infections": 19,
+    "Rt": 1.0
 }];
 
 export default situation;

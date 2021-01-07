@@ -1,10 +1,14 @@
 <script>
     import VaccineDayShot from "./vaccine-day-shot";
     import main from '@/tools/main';
+    import VaccinationDayTargets from "./vaccination-day-targets";
 
     export default {
         name: 'vaccine-day',
-        components: {VaccineDayShot},
+        components: {
+            VaccinationDayTargets,
+            VaccineDayShot
+        },
         props: {
             day: Object,
             country: Object
@@ -41,10 +45,9 @@
                 Vaccins ²
             </div>
             <div class="vaccine-day__value">
-                <input
-                    v-if="!day.locked"
-                    v-model="day.n"/>
-                <span v-else>{{day.n}}</span>
+                <vaccination-day-targets
+                    :day="day"/>
+
             </div>
         </div>
         <div

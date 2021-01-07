@@ -47,7 +47,10 @@ const getPreventedInfectionsForDay = function(country, vaccinationDay, shot) {
 const getPercentageVaccinated = function(country, vaccinationDay) {
     let total = 0;
     for (let i = 0; i <= vaccinationDay; i++) {
-        total += Number(country.vaccinationProgram[i].n);
+        let day, elderly;
+        day = country.vaccinationProgram[i];
+        elderly = day.targets.find(target => target.title === '80+');
+        total += Number(elderly.vaccinations);
     }
     return total / country.population80plus;
 };
