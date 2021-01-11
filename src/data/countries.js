@@ -1,5 +1,5 @@
 // source for number of vaccines given
-// https://ourworldindata.org/covid-targets
+// https://ourworldindata.org/covid-vaccinations
 
 const countries = [
     {
@@ -125,7 +125,7 @@ const countries = [
                         vaccinations: 0
                     }, {
                         title: '80+',
-                        vaccinations: 40524
+                        vaccinations: 41397
                     }
                 ]
             }, {
@@ -136,7 +136,51 @@ const countries = [
                         vaccinations: 0
                     }, {
                         title: '80+',
-                        vaccinations: 40000
+                        vaccinations: 41048
+                    }
+                ]
+            }, {
+                date: '2021-01-07',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 43534
+                    }
+                ]
+            }, {
+                date: '2021-01-08',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 46734
+                    }
+                ]
+            }, {
+                date: '2021-01-09',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 47334
+                    }
+                ]
+            }, {
+                date: '2021-01-10',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 47903
                     }
                 ]
             }
@@ -268,11 +312,66 @@ const countries = [
                     }
                 ]
             }, {
-                date: '2021-01-05',
+                date: '2021-01-06',
                 targets: [
                     {
                         title: 'Zorg',
                         vaccinations: 40
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-07',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 9000
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-08',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 10500
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-09',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 8000
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-10',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 6250
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-11',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 5900
                     }, {
                         title: '80+',
                         vaccinations: 0

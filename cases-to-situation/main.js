@@ -15,6 +15,20 @@ $.getJSON( url, function( data ) {
     getSituation(data);
 });
 
+function getDateString(date) {
+    let day, month, year;
+    day = date.getDate();
+    month = date.getMonth() + 1;
+    year = date.getFullYear();
+    if (day < 10) {
+        day = '0' + day;
+    }
+    if (month < 10) {
+        month = '0' + month;
+    }
+    return year + '-' + month + '-' + day;
+}
+
 function getSituation(rows) {
     let situation, startDateInMs, endDateInMs;
     situation = [];
@@ -37,7 +51,7 @@ function getSituation(rows) {
     }
 
     for (let item of rows) {
-        let time, date, type, dateCorrection;
+        let time, date, type, dateCorrection, dateString;
         date = item.Date_statistics;
         type = item.Date_statistics_type;
 
@@ -59,10 +73,10 @@ function getSituation(rows) {
                 break;
         }
         time = new Date(date).getTime() - (dateCorrection * msPerDay);
-
+        dateString = getDateString(new Date(time));
 
         if ((item.Agegroup === '80-89' || item.Agegroup === '90+') && time >= startDateInMs && time < endDateInMs) {
-            let day = getDay(date);
+            let day = getDay(dateString);
             day.infections++;
         }
     }
