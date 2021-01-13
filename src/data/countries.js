@@ -1,5 +1,5 @@
 // source for number of vaccines given
-// https://ourworldindata.org/covid-vaccinations
+// https://ourworldindata.org/covid-vaccinations?country=NLD~DEU#daily-vaccination-rates
 
 const countries = [
     {
@@ -180,7 +180,40 @@ const countries = [
                         vaccinations: 0
                     }, {
                         title: '80+',
-                        vaccinations: 47903
+                        vaccinations: 49964
+                    }
+                ]
+            }, {
+                date: '2021-01-11',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 51863
+                    }
+                ]
+            }, {
+                date: '2021-01-12',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 51863
+                    }
+                ]
+            }, {
+                date: '2021-01-13',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 51863
                     }
                 ]
             }
@@ -372,6 +405,28 @@ const countries = [
                     {
                         title: 'Zorg',
                         vaccinations: 5900
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-12',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 6500
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-13',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 6500
                     }, {
                         title: '80+',
                         vaccinations: 0
