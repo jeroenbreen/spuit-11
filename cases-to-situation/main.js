@@ -1,4 +1,4 @@
-// https://data.overheid.nl/dataset/11634-covid-19-karakteristieken-per-casus-landelijk
+// https://data.rivm.nl/covid-19/COVID-19_casus_landelijk.json
 const url = 'files/COVID-19_casus_landelijk.json';
 
 // infection is 4 days before a case administration (?)
