@@ -213,7 +213,7 @@ const countries = [
                         vaccinations: 0
                     }, {
                         title: '80+',
-                        vaccinations: 51863
+                        vaccinations: 58895
                     }
                 ]
             }
@@ -426,7 +426,7 @@ const countries = [
                 targets: [
                     {
                         title: 'Zorg',
-                        vaccinations: 6500
+                        vaccinations: 5857
                     }, {
                         title: '80+',
                         vaccinations: 0
