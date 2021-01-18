@@ -216,6 +216,50 @@ const countries = [
                         vaccinations: 58895
                     }
                 ]
+            }, {
+                date: '2021-01-14',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 60000
+                    }
+                ]
+            }, {
+                date: '2021-01-15',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 60000
+                    }
+                ]
+            }, {
+                date: '2021-01-16',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 60000
+                    }
+                ]
+            }, {
+                date: '2021-01-17',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 0
+                    }, {
+                        title: '80+',
+                        vaccinations: 60000
+                    }
+                ]
             }
         ]
     }, {
@@ -427,6 +471,50 @@ const countries = [
                     {
                         title: 'Zorg',
                         vaccinations: 5857
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-14',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 5100
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-15',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 4000
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-16',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 5000
+                    }, {
+                        title: '80+',
+                        vaccinations: 0
+                    }
+                ]
+            }, {
+                date: '2021-01-17',
+                targets: [
+                    {
+                        title: 'Zorg',
+                        vaccinations: 6200
                     }, {
                         title: '80+',
                         vaccinations: 0
