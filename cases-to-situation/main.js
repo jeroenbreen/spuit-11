@@ -80,6 +80,7 @@ function getSituation(rows) {
             day.infections++;
         }
     }
+    situation[situation.length - 1].Rt = 1;
     console.log(JSON.stringify(situation));
 }
 
